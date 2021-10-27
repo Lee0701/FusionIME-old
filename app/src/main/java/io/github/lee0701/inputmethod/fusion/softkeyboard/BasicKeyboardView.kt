@@ -4,6 +4,7 @@ import android.content.Context
 import android.graphics.*
 import android.view.*
 import androidx.core.content.ContextCompat
+import io.github.lee0701.inputmethod.fusion.event.KeyCode
 import java.util.*
 import kotlin.concurrent.timerTask
 import kotlin.math.abs
@@ -116,9 +117,9 @@ class BasicKeyboardView(
     private fun onDrawKeyBackground(canvas: Canvas, key: Key) {
         val keyTheme = theme.keyTheme[key.keyCode] ?: theme.keyTheme[null] ?: return
         val theme = when(key.keyCode) {
-            KeyEvent.KEYCODE_SHIFT_LEFT, KeyEvent.KEYCODE_SHIFT_RIGHT ->
+            KeyCode.SHIFT ->
                 (if(shift == 1) theme.stickyTheme else if(shift == 2) theme.stickyLockedTheme else null) ?: keyTheme
-            KeyEvent.KEYCODE_ALT_LEFT, KeyEvent.KEYCODE_ALT_RIGHT ->
+            KeyCode.ALT ->
                 (if(alt == 1) theme.stickyTheme else if(alt == 2) theme.stickyLockedTheme else null) ?: keyTheme
             else -> keyTheme
         }
@@ -179,8 +180,8 @@ class BasicKeyboardView(
                 pointers += pointerId to pointer
 
                 when(pointer.key.keyCode) {
-                    KeyEvent.KEYCODE_SHIFT_LEFT, KeyEvent.KEYCODE_SHIFT_RIGHT,
-                    KeyEvent.KEYCODE_ALT_LEFT, KeyEvent.KEYCODE_ALT_RIGHT -> {}
+                    KeyCode.SHIFT,
+                    KeyCode.ALT -> {}
                     else -> {
                         if(key.repeatable) timer.scheduleAtFixedRate(onLongClick, longClickDelay.toLong(), repeatRate.toLong())
                         else timer.schedule(onLongClick, longClickDelay.toLong())

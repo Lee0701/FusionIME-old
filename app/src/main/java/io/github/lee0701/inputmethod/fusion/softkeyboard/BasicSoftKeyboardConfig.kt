@@ -16,7 +16,7 @@ data class BasicSoftKeyboardConfig(
     val oneHandedMode: OneHandedMode = OneHandedMode.OFF,
     val oneHandedMargin: Int = 0,
 
-    val repeatRate: Int = 20,
+    val repeatRate: Int = 50,
     val longClickDelay: Int = 1000,
 
     val vibrate: Boolean = false,

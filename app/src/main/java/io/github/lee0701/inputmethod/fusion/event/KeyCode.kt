@@ -4,6 +4,7 @@ object KeyCode {
     const val SPACE = ' '.code
     const val ENTER = '\n'.code
     const val SHIFT = -1
+    const val ALT = -2
     const val DEL = -9
     const val SYM = -10
     const val LANG = -100
