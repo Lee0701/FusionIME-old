@@ -28,7 +28,6 @@ data class KeyboardTheme(
 data class Layout(
         val rows: List<Row>,
         val keyWidth: Float = 0.1f,
-        val key: String,
 )
 
 data class Row(

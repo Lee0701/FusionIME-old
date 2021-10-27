@@ -2,8 +2,6 @@ package io.github.lee0701.inputmethod.fusion
 
 import android.inputmethodservice.InputMethodService
 import android.view.View
-import android.widget.Button
-import android.widget.LinearLayout
 import io.github.lee0701.inputmethod.fusion.softkeyboard.BasicSoftKeyboard
 import io.github.lee0701.inputmethod.fusion.softkeyboard.BasicSoftKeyboardConfig
 import io.github.lee0701.inputmethod.fusion.softkeyboard.SoftKeyboard

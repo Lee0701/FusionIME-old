@@ -309,29 +309,6 @@ class BasicSoftKeyboard(
     }
 
     companion object {
-        val LAYOUTS = listOf(
-                SoftLayout.LAYOUT_10COLS_MOBILE,
-                SoftLayout.LAYOUT_10COLS_MOBILE_WITH_NUM,
-                SoftLayout.LAYOUT_10COLS_MOBILE_WITH_APOSTROPHE,
-                SoftLayout.LAYOUT_10COLS_MOBILE_WITH_APOSTROPHE_NUM,
-                SoftLayout.LAYOUT_10COLS_DVORAK,
-                SoftLayout.LAYOUT_10COLS_DVORAK_WITH_NUM,
-                SoftLayout.LAYOUT_10COLS_MOD_QUOTE,
-                SoftLayout.LAYOUT_10COLS_MOD_QUOTE_WITH_NUM,
-                TabletSoftLayout.LAYOUT_11COLS_TABLET,
-                TabletSoftLayout.LAYOUT_11COLS_TABLET_WITH_NUM,
-                TabletSoftLayout.LAYOUT_11COLS_TABLET_WITH_QUOTE,
-                TabletSoftLayout.LAYOUT_11COLS_TABLET_WITH_QUOTE_NUM,
-                FullSoftLayout.LAYOUT_FULL,
-                MiniSoftLayout.LAYOUT_MINI_7COLS,
-                MiniSoftLayout.LAYOUT_MINI_8COLS_GOOGLE,
-                MobileSoftLayout.LAYOUT_12KEY_4COLS,
-                MobileSoftLayout.LAYOUT_15KEY_A,
-                MobileSoftLayout.LAYOUT_15KEY_B,
-                MobileSoftLayout.LAYOUT_15KEY_A_WITH_NUM,
-                MobileSoftLayout.LAYOUT_15KEY_B_WITH_NUM
-        ).map { it.key to it }.toMap()
-
         val THEMES = mapOf(
                 "white" to BasicSoftKeyboardTheme.WHITE,
                 "dark" to BasicSoftKeyboardTheme.DARK,

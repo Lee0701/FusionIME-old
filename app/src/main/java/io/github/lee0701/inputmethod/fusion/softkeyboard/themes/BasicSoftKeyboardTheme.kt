@@ -1,8 +1,8 @@
 package io.github.lee0701.inputmethod.fusion.softkeyboard.themes
 
 import android.graphics.Color
-import android.view.KeyEvent
 import io.github.lee0701.inputmethod.fusion.R
+import io.github.lee0701.inputmethod.fusion.event.KeyCode
 import io.github.lee0701.inputmethod.fusion.softkeyboard.KeyTheme
 import io.github.lee0701.inputmethod.fusion.softkeyboard.KeyboardTheme
 import io.github.lee0701.inputmethod.fusion.softkeyboard.RowTheme
@@ -45,20 +45,17 @@ object BasicSoftKeyboardTheme {
             ),
             mapOf(
                     null to WHITE_KEY_CHARACTER,
-                    KeyEvent.KEYCODE_SPACE to WHITE_KEY_SPACE,
-                    KeyEvent.KEYCODE_ENTER to KeyTheme(
+                    KeyCode.SPACE to WHITE_KEY_SPACE,
+                    KeyCode.ENTER to KeyTheme(
                             R.drawable.keybg_white_enter,
                             R.drawable.keybg_white_mod_p,
                             Color.parseColor("#dd000000"),
                             R.drawable.keyfg_enter_white
                     ),
-                    KeyEvent.KEYCODE_SHIFT_LEFT to WHITE_KEY_SHIFT,
-                    KeyEvent.KEYCODE_SHIFT_RIGHT to WHITE_KEY_SHIFT,
-                    KeyEvent.KEYCODE_DEL to WHITE_KEY_DEL,
-                    KeyEvent.KEYCODE_SYM to WHITE_KEY_MOD,
-                    KeyEvent.KEYCODE_ALT_LEFT to WHITE_KEY_MOD,
-                    KeyEvent.KEYCODE_ALT_RIGHT to WHITE_KEY_MOD,
-                    KeyEvent.KEYCODE_LANGUAGE_SWITCH to WHITE_KEY_LANG
+                    KeyCode.SHIFT to WHITE_KEY_SHIFT,
+                    KeyCode.DEL to WHITE_KEY_DEL,
+                    KeyCode.SYM to WHITE_KEY_MOD,
+                    KeyCode.LANG to WHITE_KEY_LANG
             ),
             WHITE_KEY_STICKY,
             WHITE_KEY_STICKY_LOCKED,
@@ -101,20 +98,17 @@ object BasicSoftKeyboardTheme {
             ),
             mapOf(
                     null to DARK_KEY_CHARACTER,
-                    KeyEvent.KEYCODE_SPACE to DARK_KEY_SPACE,
-                    KeyEvent.KEYCODE_ENTER to KeyTheme(
+                    KeyCode.SPACE to DARK_KEY_SPACE,
+                    KeyCode.ENTER to KeyTheme(
                             R.drawable.keybg_dark_enter,
                             R.drawable.keybg_dark_enter_p,
                             Color.WHITE,
                             R.drawable.keyfg_enter_white
                     ),
-                    KeyEvent.KEYCODE_SHIFT_LEFT to DARK_KEY_SHIFT,
-                    KeyEvent.KEYCODE_SHIFT_RIGHT to DARK_KEY_SHIFT,
-                    KeyEvent.KEYCODE_DEL to DARK_KEY_DEL,
-                    KeyEvent.KEYCODE_SYM to DARK_KEY_MOD,
-                    KeyEvent.KEYCODE_ALT_LEFT to DARK_KEY_MOD,
-                    KeyEvent.KEYCODE_ALT_RIGHT to DARK_KEY_MOD,
-                    KeyEvent.KEYCODE_LANGUAGE_SWITCH to DARK_KEY_LANG
+                KeyCode.SHIFT to DARK_KEY_SHIFT,
+                    KeyCode.DEL to DARK_KEY_DEL,
+                    KeyCode.SYM to DARK_KEY_MOD,
+                    KeyCode.LANG to DARK_KEY_LANG
             ),
             DARK_KEY_STICKY,
             DARK_KEY_STICKY_LOCKED,
@@ -156,17 +150,16 @@ object BasicSoftKeyboardTheme {
             ),
             mapOf(
                     null to FLATWHITE_KEY_CHARACTER,
-                    KeyEvent.KEYCODE_SPACE to FLATWHITE_KEY_SPACE,
-                    KeyEvent.KEYCODE_ENTER to KeyTheme(
+                    KeyCode.SPACE to FLATWHITE_KEY_SPACE,
+                    KeyCode.ENTER to KeyTheme(
                             R.drawable.keybg_flatwhite_enter,
                             R.drawable.keybg_flatwhite_enter_p,
                             Color.parseColor("#ff000000"),
                             R.drawable.keyfg_enter_white
                     ),
-                    KeyEvent.KEYCODE_SHIFT_LEFT to FLATWHITE_KEY_SHIFT,
-                    KeyEvent.KEYCODE_SHIFT_RIGHT to FLATWHITE_KEY_SHIFT,
-                    KeyEvent.KEYCODE_DEL to FLATWHITE_KEY_DEL,
-                    KeyEvent.KEYCODE_LANGUAGE_SWITCH to FLATWHITE_KEY_LANG
+                    KeyCode.SHIFT to FLATWHITE_KEY_SHIFT,
+                    KeyCode.DEL to FLATWHITE_KEY_DEL,
+                    KeyCode.LANG to FLATWHITE_KEY_LANG
             ),
             FLATWHITE_KEY_STICKY,
             FLATWHITE_KEY_STICKY_LOCKED,
@@ -208,17 +201,16 @@ object BasicSoftKeyboardTheme {
             ),
             mapOf(
                     null to FLATDARK_KEY_CHARACTER,
-                    KeyEvent.KEYCODE_SPACE to FLATDARK_KEY_SPACE,
-                    KeyEvent.KEYCODE_ENTER to KeyTheme(
+                    KeyCode.SPACE to FLATDARK_KEY_SPACE,
+                    KeyCode.ENTER to KeyTheme(
                             R.drawable.keybg_flatdark_enter,
                             R.drawable.keybg_flatdark_enter_p,
                             Color.parseColor("#ffffffff"),
                             R.drawable.keyfg_enter_white
                     ),
-                    KeyEvent.KEYCODE_SHIFT_LEFT to FLATDARK_KEY_SHIFT,
-                    KeyEvent.KEYCODE_SHIFT_RIGHT to FLATDARK_KEY_SHIFT,
-                    KeyEvent.KEYCODE_DEL to FLATDARK_KEY_DEL,
-                    KeyEvent.KEYCODE_LANGUAGE_SWITCH to FLATDARK_KEY_LANG
+                    KeyCode.SHIFT to FLATDARK_KEY_SHIFT,
+                    KeyCode.DEL to FLATDARK_KEY_DEL,
+                    KeyCode.LANG to FLATDARK_KEY_LANG
             ),
             FLATDARK_KEY_STICKY,
             FLATDARK_KEY_STICKY_LOCKED,
