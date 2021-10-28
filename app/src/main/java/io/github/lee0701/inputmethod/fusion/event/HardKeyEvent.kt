@@ -1,13 +1,13 @@
 package io.github.lee0701.inputmethod.fusion.event
 
-data class SoftwareKeyEvent(
+data class HardKeyEvent(
     val type: Type,
     override val keyCode: Int?,
     override val char: Char?,
     override val text: String?,
-    val modifierState: ModifierState,
+    override val modifierState: ModifierState,
 ): KeyEvent {
     enum class Type {
-        NONE, PRESS, RELEASE, LONG, REPEAT, MORE_KEY_SELECT
+        NONE, PRESS, RELEASE, REPEAT
     }
 }

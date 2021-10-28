@@ -21,7 +21,6 @@ import androidx.core.content.ContextCompat
 import io.github.lee0701.inputmethod.fusion.R
 import io.github.lee0701.inputmethod.fusion.event.*
 import io.github.lee0701.inputmethod.fusion.hangul.Hangul
-import io.github.lee0701.inputmethod.fusion.softkeyboard.layouts.*
 import io.github.lee0701.inputmethod.fusion.softkeyboard.themes.BasicSoftKeyboardTheme
 
 class BasicSoftKeyboard(
@@ -52,6 +51,9 @@ class BasicSoftKeyboard(
     override var alt: Int
         get() = keyboardView?.alt ?: 0
         set(value) {keyboardView?.alt = value}
+
+    private val modifierState: ModifierState get() =
+        ModifierState(shift = shift > 0, alt = alt > 0)
 
     private var pressTime: Long = 0
 
@@ -195,8 +197,8 @@ class BasicSoftKeyboard(
         sound?.let { soundPool?.play(it, volume, volume, 1, 0, 1f) }
         pressTime = System.currentTimeMillis()
 
-        onKeyEvent(SoftwareKeyEvent(
-            SoftwareKeyEvent.Type.PRESS,
+        onKeyEvent(SoftKeyClickEvent(
+            SoftKeyClickEvent.Type.PRESS,
             keyCode,
             null,
             null,
@@ -213,8 +215,8 @@ class BasicSoftKeyboard(
         val volume = timeRatio * config.soundVolume
         upSound?.let { soundPool?.play(it, volume, volume, 1, 0, 1f) }
 
-        onKeyEvent(SoftwareKeyEvent(
-            SoftwareKeyEvent.Type.RELEASE,
+        onKeyEvent(SoftKeyClickEvent(
+            SoftKeyClickEvent.Type.RELEASE,
             keyCode,
             null,
             null,
@@ -224,8 +226,8 @@ class BasicSoftKeyboard(
 
     override fun onKeyLongClick(keyCode: Int) {
         vibrator?.vibrate(config.vibrateDuration.toLong() / 2)
-        onKeyEvent(SoftwareKeyEvent(
-            SoftwareKeyEvent.Type.LONG,
+        onKeyEvent(SoftKeyClickEvent(
+            SoftKeyClickEvent.Type.LONG,
             keyCode,
             null,
             null,
@@ -234,58 +236,62 @@ class BasicSoftKeyboard(
     }
 
     override fun onKeyRepeat(keyCode: Int) {
-        onKeyEvent(SoftwareKeyEvent(
-            SoftwareKeyEvent.Type.REPEAT,
+        onKeyEvent(SoftKeyClickEvent(
+            SoftKeyClickEvent.Type.REPEAT,
             keyCode,
             null,
             null,
-            ModifierState(shift = shift > 0, alt = alt > 0)
+            modifierState,
         ))
     }
 
     override fun onMoreKeySelect(originalKeyCode: Int, keyCode: Int) {
-        onKeyEvent(SoftwareKeyEvent(
-            SoftwareKeyEvent.Type.MORE_KEY_SELECT,
+        onKeyEvent(SoftKeyClickEvent(
+            SoftKeyClickEvent.Type.MORE_KEY_SELECT,
             keyCode,
             null,
             null,
-            ModifierState(shift = shift > 0, alt = alt > 0)
+            modifierState,
         ))
     }
 
     override fun onKeyFlickLeft(keyCode: Int) {
-        onKeyEvent(KeyFlickEvent(
+        onKeyEvent(SoftKeyFlickEvent(
             FlickDirection4.LEFT,
             keyCode,
             null,
             null,
+            modifierState,
         ))
     }
 
     override fun onKeyFlickRight(keyCode: Int) {
-        onKeyEvent(KeyFlickEvent(
+        onKeyEvent(SoftKeyFlickEvent(
             FlickDirection4.RIGHT,
             keyCode,
             null,
             null,
+            modifierState,
         ))
     }
 
     override fun onKeyFlickUp(keyCode: Int) {
-        onKeyEvent(KeyFlickEvent(
+        onKeyEvent(SoftKeyFlickEvent(
             FlickDirection4.UP,
             keyCode,
             null,
             null,
+            modifierState,
         ))
     }
 
     override fun onKeyFlickDown(keyCode: Int) {
-        onKeyEvent(KeyFlickEvent(
+        onKeyEvent(SoftKeyFlickEvent(
             FlickDirection4.DOWN,
             keyCode,
             null,
             null,
+            modifierState,
         ))
     }
 

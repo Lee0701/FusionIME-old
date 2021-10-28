@@ -4,7 +4,7 @@ import io.github.lee0701.inputmethod.fusion.event.KeyEvent
 import android.view.KeyEvent.*
 import io.github.lee0701.inputmethod.fusion.event.KeyCode
 import io.github.lee0701.inputmethod.fusion.event.ModifierState
-import io.github.lee0701.inputmethod.fusion.event.SoftwareKeyEvent
+import io.github.lee0701.inputmethod.fusion.event.HardKeyEvent
 
 class RawHardKeyboard: HardKeyboard {
 
@@ -15,16 +15,16 @@ class RawHardKeyboard: HardKeyboard {
     override fun convertKeyEvent(keyEvent: android.view.KeyEvent): KeyEvent {
         val type = when(keyEvent.action) {
             ACTION_DOWN -> {
-                if(keyEvent.repeatCount > 0) SoftwareKeyEvent.Type.REPEAT
-                else SoftwareKeyEvent.Type.PRESS
+                if(keyEvent.repeatCount > 0) HardKeyEvent.Type.REPEAT
+                else HardKeyEvent.Type.PRESS
             }
-            ACTION_UP -> SoftwareKeyEvent.Type.RELEASE
-            else -> SoftwareKeyEvent.Type.NONE
+            ACTION_UP -> HardKeyEvent.Type.RELEASE
+            else -> HardKeyEvent.Type.NONE
         }
         val keyCode = convertKeyCode(keyEvent.keyCode)
         val char = if(keyEvent.isPrintingKey) keyEvent.unicodeChar.toChar() else null
         val modifierState = ModifierState(keyEvent)
-        return SoftwareKeyEvent(type, keyCode, char, null, modifierState)
+        return HardKeyEvent(type, keyCode, char, null, modifierState)
     }
 
     private fun convertKeyCode(keyCode: Int): Int {

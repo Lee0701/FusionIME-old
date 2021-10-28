@@ -4,4 +4,5 @@ interface KeyEvent: Event {
     val keyCode: Int?
     val char: Char?
     val text: String?
+    val modifierState: ModifierState
 }
