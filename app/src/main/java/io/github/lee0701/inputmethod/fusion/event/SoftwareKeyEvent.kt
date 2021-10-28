@@ -8,6 +8,6 @@ data class SoftwareKeyEvent(
     val modifierState: ModifierState,
 ): KeyEvent {
     enum class Type {
-        PRESS, RELEASE, LONG, REPEAT, MORE_KEY_SELECT
+        NONE, PRESS, RELEASE, LONG, REPEAT, MORE_KEY_SELECT
     }
 }

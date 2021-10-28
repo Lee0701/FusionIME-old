@@ -6,7 +6,7 @@ import io.github.lee0701.inputmethod.fusion.event.KeyEvent
 interface InputEngine {
     var inputConnection: InputConnection?
 
-    fun init()
-    fun destroy()
+    fun reset()
+
     fun onKeyEvent(keyEvent: KeyEvent)
 }

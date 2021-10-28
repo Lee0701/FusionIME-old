@@ -117,9 +117,9 @@ class BasicKeyboardView(
     private fun onDrawKeyBackground(canvas: Canvas, key: Key) {
         val keyTheme = theme.keyTheme[key.keyCode] ?: theme.keyTheme[null] ?: return
         val theme = when(key.keyCode) {
-            KeyCode.SHIFT ->
+            KeyCode.SHIFT, KeyCode.SHIFT_LEFT, KeyCode.SHIFT_RIGHT ->
                 (if(shift == 1) theme.stickyTheme else if(shift == 2) theme.stickyLockedTheme else null) ?: keyTheme
-            KeyCode.ALT ->
+            KeyCode.ALT, KeyCode.ALT_LEFT, KeyCode.ALT_RIGHT ->
                 (if(alt == 1) theme.stickyTheme else if(alt == 2) theme.stickyLockedTheme else null) ?: keyTheme
             else -> keyTheme
         }
@@ -180,8 +180,8 @@ class BasicKeyboardView(
                 pointers += pointerId to pointer
 
                 when(pointer.key.keyCode) {
-                    KeyCode.SHIFT,
-                    KeyCode.ALT -> {}
+                    KeyCode.SHIFT, KeyCode.SHIFT_LEFT, KeyCode.SHIFT_RIGHT,
+                    KeyCode.ALT, KeyCode.ALT_LEFT, KeyCode.ALT_RIGHT -> {}
                     else -> {
                         if(key.repeatable) timer.scheduleAtFixedRate(onLongClick, longClickDelay.toLong(), repeatRate.toLong())
                         else timer.schedule(onLongClick, longClickDelay.toLong())

@@ -10,10 +10,8 @@ class RawInputEngine: InputEngine {
     override var inputConnection: InputConnection? = null
     private var shift: Boolean = false
 
-    override fun init() {
-    }
+    override fun reset() {
 
-    override fun destroy() {
     }
 
     override fun onKeyEvent(keyEvent: KeyEvent) {
@@ -22,7 +20,7 @@ class RawInputEngine: InputEngine {
             ?: keyEvent.keyCode?.let { if(it <= 0) null else Char(it).toString() }
         if(keyEvent is SoftwareKeyEvent) {
             when(keyEvent.keyCode) {
-                KeyCode.SHIFT -> {
+                KeyCode.SHIFT, KeyCode.SHIFT_LEFT, KeyCode.SHIFT_RIGHT -> {
                     shift = keyEvent.type == SoftwareKeyEvent.Type.PRESS
                 }
                 KeyCode.DEL -> {

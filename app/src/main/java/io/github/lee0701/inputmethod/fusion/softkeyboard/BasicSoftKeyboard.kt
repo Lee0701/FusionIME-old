@@ -28,7 +28,7 @@ class BasicSoftKeyboard(
     private val config: BasicSoftKeyboardConfig,
     private val layout: Layout,
     private val theme: KeyboardTheme,
-    private val onKeyEvent: (KeyEvent) -> Unit,
+    override val onKeyEvent: (KeyEvent) -> Unit,
 ): MoreKeysSupportedSoftKeyboard, BasicKeyboardView.OnKeyListener {
 
     var keyboardViewHolder: ViewGroup? = null

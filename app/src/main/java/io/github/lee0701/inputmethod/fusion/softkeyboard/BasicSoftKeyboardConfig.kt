@@ -17,7 +17,7 @@ data class BasicSoftKeyboardConfig(
     val oneHandedMargin: Int = 0,
 
     val repeatRate: Int = 50,
-    val longClickDelay: Int = 1000,
+    val longClickDelay: Int = 500,
 
     val vibrate: Boolean = false,
     val vibrateDuration: Int = 0,

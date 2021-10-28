@@ -2,8 +2,11 @@ package io.github.lee0701.inputmethod.fusion.softkeyboard
 
 import android.content.Context
 import android.view.View
+import io.github.lee0701.inputmethod.fusion.event.KeyEvent
 
 interface SoftKeyboard {
+
+    val onKeyEvent: (KeyEvent) -> Unit
 
     var shift: Int
     var alt: Int

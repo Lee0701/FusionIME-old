@@ -6,7 +6,8 @@ import android.view.inputmethod.EditorInfo
 import io.github.lee0701.inputmethod.fusion.engine.InputEngine
 import io.github.lee0701.inputmethod.fusion.engine.RawInputEngine
 import io.github.lee0701.inputmethod.fusion.event.KeyEvent
-import io.github.lee0701.inputmethod.fusion.event.SoftwareKeyEvent
+import io.github.lee0701.inputmethod.fusion.hardkeyboard.HardKeyboard
+import io.github.lee0701.inputmethod.fusion.hardkeyboard.RawHardKeyboard
 import io.github.lee0701.inputmethod.fusion.softkeyboard.BasicSoftKeyboard
 import io.github.lee0701.inputmethod.fusion.softkeyboard.BasicSoftKeyboardConfig
 import io.github.lee0701.inputmethod.fusion.softkeyboard.SoftKeyboard
@@ -16,6 +17,7 @@ import io.github.lee0701.inputmethod.fusion.softkeyboard.themes.BasicSoftKeyboar
 class FusionIME: InputMethodService() {
 
     lateinit var softKeyboard: SoftKeyboard
+    lateinit var hardKeyboard: HardKeyboard
     lateinit var inputEngine: InputEngine
 
     override fun onCreate() {
@@ -27,7 +29,8 @@ class FusionIME: InputMethodService() {
             config,
             SoftLayout.LAYOUT_10COLS_MOBILE,
             BasicSoftKeyboardTheme.WHITE
-        ) { onSoftKeyEvent(it) }
+        ) { onKeyEvent(it) }
+        hardKeyboard = RawHardKeyboard()
         inputEngine = RawInputEngine()
     }
 
@@ -40,7 +43,19 @@ class FusionIME: InputMethodService() {
         return softKeyboard.initView(this)
     }
 
-    private fun onSoftKeyEvent(event: KeyEvent) {
+    override fun onKeyDown(keyCode: Int, event: android.view.KeyEvent): Boolean {
+        val convertedEvent = hardKeyboard.convertKeyEvent(event)
+        onKeyEvent(convertedEvent)
+        return true
+    }
+
+    override fun onKeyUp(keyCode: Int, event: android.view.KeyEvent): Boolean {
+        val convertedEvent = hardKeyboard.convertKeyEvent(event)
+        onKeyEvent(convertedEvent)
+        return true
+    }
+
+    private fun onKeyEvent(event: KeyEvent) {
         inputEngine.onKeyEvent(event)
     }
 }
